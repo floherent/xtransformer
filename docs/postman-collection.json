@@ -1,0 +1,80 @@
+{
+  "info": {
+    "_postman_id": "bdb7ce88-d84a-43df-abb2-4b4873f4ab3b",
+    "name": "xtransformer",
+    "description": "JSON transformation service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "current config",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/v1/config",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "config"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create rules",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": { \"Account\": \"Account.AccountName\", \"productNames\": \"Account.Order.Product[].ProductName\",\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/rules",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "rules"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "evaluate rules",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": {\n  \"Account\": { \"AccountName\": \"Firefly\" }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/v1/rules/{{rule_id}}/evaluate",
+          "host": ["{{base_url}}"],
+          "path": ["v1", "rules", "{{rule_id}}", "evaluate"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+name: xtransformer
+description: JSON transformation
+
+service:
+  port: 8080
+  contextPath: /
+  uploadPath: uploads
+  bodyLimit: 50mb
+
+performance:
+  health:
+    indicators:
+      disk: 0.75
+      memory: 1024
